@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nghia Hoang | Game Inventory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/games.css">
+</head>
+
+<body>
+<div id="loading-screen">
+    <div class="loading-text">LOADING ASSETS...</div>
+    <div class="loading-bar-container">
+        <div class="loading-bar-fill" id="progress-bar"></div>
+    </div>
+</div>
+
+<div class="crt-overlay"></div>
+
+<header>
+    <div class="hud-bar">
+        <span>PLAYER: NGHIA</span>
+        <span>WORLD: 1-1</span>
+        <span>COINS: 99</span>
+    </div>
+
+    <div class="breadcrumbs">
+        <a href="hoangducnghia.html">HOME</a> >
+        <a href="favorite.html">FAVORITES</a> >
+        <span style="color: white; text-decoration: underline;">GAMES</span>
+    </div>
+
+    <h1 class="main-title">SELECT YOUR GAME</h1>
+
+    <div class="subtitle">
+        "My library of digital adventures. Only 10/10 allowed."
+    </div>
+</header>
+
+<main class="hobby-container">
+    <ul class="gridLinks">
+
+        <li>
+            <div class="pixel-card">
+                <div class="card-image-wrapper">
+                    <img loading="lazy" src="../images/rdr2.jpg" alt="Red Dead Redemption 2">
+                </div>
+                <div class="card-info">
+                    <div>
+                        <span class="game-title">RED DEAD REDEMPTION 2</span>
+                        <div class="rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <span class="game-dev">
+                            <i class="fa-solid fa-gamepad"></i> Rockstar
+                        </span>
+                </div>
+            </div>
+        </li>
+
+        <li>
+            <div class="pixel-card">
+                <div class="card-image-wrapper">
+                    <img loading="lazy" src="../images/sekiro.jpg" alt="Sekiro: Shadows Die Twice">
+                </div>
+                <div class="card-info">
+                    <div>
+                        <span class="game-title">SEKIRO: SHADOWS DIE TWICE</span>
+                        <div class="rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                    </div>
+                    <span class="game-dev">
+                            <i class="fa-solid fa-dragon"></i> FromSoft
+                        </span>
+                </div>
+            </div>
+        </li>
+
+        <li>
+            <div class="pixel-card">
+                <div class="card-image-wrapper">
+                    <img loading="lazy" src="../images/stardew.png" alt="Stardew Valley">
+                </div>
+                <div class="card-info">
+                    <div>
+                        <span class="game-title">STARDEW VALLEY</span>
+                        <div class="rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                    </div>
+                    <span class="game-dev">
+                            <i class="fa-solid fa-carrot"></i> ConcernedApe
+                        </span>
+                </div>
+            </div>
+        </li>
+
+    </ul>
+</main>
+
+<footer>
+    <div id="footer-container">
+        <div class="footer-logo">
+            <h3>NGHIA<span>HOANG</span></h3>
+            <p style="font-size: 0.8rem; color: #888;">THANKS FOR PLAYING!</p>
+        </div>
+
+        <div style="text-align: right;">
+            <a class="pixel-btn" href="mailto:athurhawking@gmail.com">
+                <i class="fa-solid fa-envelope"></i> SEND_MAIL()
+            </a>
+            <p class="copyright">
+                © 2024 - <script>document.write(new Date().getFullYear())</script>
+                <strong><a href="hoangducnghia.html">Hoang Duc Nghia</a></strong>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const progressBar = document.getElementById('progress-bar');
+        const loadingScreen = document.getElementById('loading-screen');
+        let width = 0;
+
+        // Giả lập loading chạy từ 0% đến 100%
+        const interval = setInterval(function() {
+            if (width >= 100) {
+                clearInterval(interval);
+                // Khi load xong
+                loadingScreen.style.opacity = '0'; // Mờ dần
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none'; // Ẩn hẳn
+                }, 500);
+            } else {
+                width += Math.random() * 10; // Tăng ngẫu nhiên để trông tự nhiên
+                if(width > 100) width = 100;
+                progressBar.style.width = width + '%';
+            }
+        }, 100); // Tốc độ cập nhật
+    });
+</script>
+</body>
+</html>

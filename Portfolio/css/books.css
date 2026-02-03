@@ -1,0 +1,211 @@
+/* --- CÀI ĐẶT CƠ BẢN & MÀU SẮC --- */
+:root {
+    --bg-wood-dark: #2b1b17;
+    --wood-texture: #3e2723;
+    --text-cream: #f5f5dc;
+    --accent-green: #4caf50;
+    --gold-highlight: #ffd700;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg-wood-dark);
+    /* Tạo vân gỗ bằng CSS thuần */
+    background-image:
+            repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 10px),
+            linear-gradient(to bottom, #2b1b17, #1a100e);
+    color: var(--text-cream);
+    font-family: 'Cormorant Garamond', serif; /* Font chữ có chân cổ điển */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+}
+
+/* --- HEADER (Giữ nguyên vị trí, đổi style) --- */
+header {
+    padding: 40px 20px;
+    background: linear-gradient(to bottom, rgba(62, 39, 35, 0.9), rgba(43, 27, 23, 1));
+    border-bottom: 4px solid #1a100e;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.breadcrumbs {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #a1887f; /* Màu gỗ nhạt */
+    margin-bottom: 10px;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.breadcrumbs a:hover {
+    color: var(--accent-green); /* Hover màu lá cây */
+}
+
+h1.breadcrumbs a {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    color: var(--text-cream);
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px #000;
+}
+
+.header-border {
+    width: 100px;
+    height: 3px;
+    background-color: var(--accent-green); /* Đổi vạch kẻ sang màu xanh lá */
+    margin: 15px auto;
+    border-radius: 2px;
+}
+
+h4 {
+    font-weight: normal;
+    font-style: italic;
+    color: #d7ccc8;
+    margin-bottom: 15px;
+}
+
+q {
+    font-size: 1.1rem;
+    color: #bdbdbd;
+    line-height: 1.6;
+}
+
+.plato {
+    display: block;
+    margin-top: 5px;
+    font-weight: bold;
+    color: var(--accent-green);
+}
+
+/* --- GRID SÁCH (Hobby Container) --- */
+.hobby-container {
+    flex: 1; /* Đẩy footer xuống đáy */
+    display: flex;
+    justify-content: center;
+    padding: 50px 20px;
+}
+
+.gridLinks {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 60px; /* Khoảng cách giữa các sách */
+    max-width: 1200px;
+}
+
+.gridLinks li {
+    text-align: center;
+    width: 200px;
+    position: relative;
+    /* Tạo hiệu ứng cái kệ gỗ dưới mỗi cuốn sách */
+    border-bottom: 15px solid #5d4037;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    border-radius: 0 0 5px 5px; /* Bo tròn góc kệ */
+    box-shadow: 0 15px 10px -10px rgba(0,0,0,0.5); /* Bóng đổ của kệ */
+}
+
+/* Hiệu ứng giá gỗ dài ra 2 bên chút */
+.gridLinks li::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: -10px;
+    right: -10px;
+    height: 15px;
+    background: #4e342e;
+    z-index: -1;
+    border-radius: 5px;
+}
+
+/* --- HIỆU ỨNG BÌA SÁCH 3D --- */
+.book-wrap {
+    height: 300px; /* Chiều cao cố định cho sách */
+    width: 100%;
+    margin-bottom: 15px;
+    perspective: 1000px;
+}
+
+.gridLinks img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2px 4px 4px 2px;
+    box-shadow: -5px 5px 15px rgba(0,0,0,0.6); /* Bóng đổ sách */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+}
+
+/* Hover vào sách: Sách nổi lên */
+.gridLinks li:hover img {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: -10px 15px 25px rgba(0,0,0,0.7);
+}
+
+/* --- TEXT INFO --- */
+.title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-cream);
+    display: block;
+    margin-top: 10px;
+}
+
+.type {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: #a1887f;
+    font-size: 1.1rem;
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: #1a100e;
+    color: white;
+    padding: 30px 20px;
+    border-top: 3px solid #3e2723;
+}
+
+#footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+footer h3 a span {
+    color: var(--accent-green);
+}
+
+.portfolio-txt-button {
+    color: var(--text-cream);
+    border: 1px solid var(--text-cream);
+    padding: 5px 15px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.portfolio-txt-button:hover {
+    color: var(--gold-highlight);
+    border-color: var(--gold-highlight);
+}
+
+.copyright a {
+    color: var(--accent-green);
+    font-weight: bold;
+}

@@ -1,0 +1,295 @@
+:root {
+    --ink-color: #1a1a1a;         /* Màu đen mực in */
+    --paper-color: #f0f0eb;       /* Màu giấy báo cũ */
+    --accent-red: #b30000;        /* Đỏ sẫm (dấu mộc) */
+
+    /* Fonts */
+    --font-headline: "Playfair Display", "Times New Roman", serif;
+    --font-body: "Times New Roman", serif;
+    --font-mono: "Courier Prime", "Courier New", monospace;
+}
+
+* {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--paper-color);
+    color: var(--ink-color);
+    font-family: var(--font-body);
+    /* Texture giấy cũ (Noise) */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Đảm bảo footer luôn ở đáy nếu nội dung ngắn */
+}
+
+/* --- HEADER (TRẢI DÀI) --- */
+header {
+    width: 100%;
+    padding: 25px 50px;
+    display: flex;
+    flex-direction: column; /* THAY ĐỔI: Xếp dọc thay vì ngang */
+    justify-content: center;
+    align-items: flex-start; /* Canh trái toàn bộ nội dung header */
+    gap: 0px; /* Khoảng cách giữa tên và chữ Blog */
+    border-bottom: 4px double var(--ink-color);
+    margin-bottom: 40px;
+}
+/* Phần tên bên trái */
+.breadcrumbs {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #555;
+}
+.breadcrumbs a {
+    color: var(--ink-color);
+    font-weight: bold;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.breadcrumbs a:hover {
+    color: var(--accent-red);
+    border-bottom-color: var(--accent-red);
+}
+
+/* Phần tiêu đề "BLOG" bên phải */
+h1.breadcrumbs {
+    margin: 0; /* Reset margin */
+}
+
+h1.breadcrumbs a {
+    font-family: var(--font-headline);
+    font-size: 3.5rem; /* Tăng kích thước một chút cho ra dáng tiêu đề báo */
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    color: var(--ink-color);
+    text-decoration: none;
+    line-height: 1.1; /* Giảm khoảng cách dòng thừa */
+    display: block;
+    margin-top: 5px; /* Đẩy xuống một chút so với dòng trên */
+}
+
+h1.breadcrumbs a:hover {
+    color: var(--ink-color); /* Không đổi màu tiêu đề lớn */
+    cursor: default;
+}
+
+.header-border { display: none; }
+
+/* --- MAIN CONTENT --- */
+.blog-main {
+    width: 100%;
+    max-width: 1200px; /* Rộng hơn để cân xứng với header */
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+/* Intro Style */
+.introduction {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    padding: 30px 0;
+    margin-bottom: 50px;
+    border-bottom: 1px solid var(--ink-color);
+    width: 100%;
+    text-align: left; /* Canh trái cho giống văn bản đánh máy */
+}
+
+.introduction p::before {
+    content: ">> ";
+    color: var(--accent-red);
+    font-weight: bold;
+}
+
+/* --- BLOG SECTIONS --- */
+.blog-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+.blog-container h2 {
+    font-family: var(--font-headline);
+    font-size: 2.2rem;
+    border-bottom: 2px solid var(--ink-color);
+    margin-bottom: 30px;
+    display: block; /* Chiếm full dòng */
+    width: 100%;
+    text-align: left;
+}
+
+.blog-topic {
+    color: var(--ink-color);
+    transition: color 0.3s ease;
+}
+
+.blog-topic:hover {
+    color: var(--accent-red);
+}
+
+.divider { display: none; }
+
+/* --- GRID LAYOUT --- */
+.gridLinks {
+    list-style: none;
+    display: grid;
+    /* Tự động chia cột, tối thiểu 300px mỗi cột */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+.gridLinks li {
+    background: transparent;
+    border: 1px solid var(--ink-color);
+    min-height: 120px;
+    padding: 20px;
+    position: relative;
+    /* Bóng cứng (Hard Shadow) đặc trưng retro */
+    box-shadow: 8px 8px 0px rgba(26, 26, 26, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.gridLinks li:hover {
+    transform: translate(-4px, -4px); /* Nhấc lên nhẹ */
+    box-shadow: 12px 12px 0px rgba(179, 0, 0, 0.2); /* Bóng to hơn, đổi màu đỏ nhạt */
+    border-color: var(--accent-red);
+}
+
+/* --- FOOTER (TRẢI DÀI) --- */
+footer {
+    border-top: 4px double var(--ink-color);
+    padding: 40px 50px; /* Padding ngang khớp với Header */
+    margin-top: auto; /* Đẩy xuống đáy */
+    width: 100%;
+    background: transparent;
+}
+
+#footer-container {
+    display: flex;
+    justify-content: space-between; /* Giữ nguyên: Đẩy sang 2 bên trái phải */
+    align-items: center; /* THAY ĐỔI QUAN TRỌNG: Căn giữa theo chiều dọc */
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+/* Tinh chỉnh thêm để nút và chữ nhìn cân đối hoàn hảo */
+footer h3 {
+    line-height: 1; /* Giảm chiều cao dòng thừa của chữ lớn để căn chuẩn hơn */
+    margin: 0;      /* Xóa margin thừa */
+}
+
+/* Đảm bảo khối bên phải căn giữa nội dung con */
+#footer-container > div:last-child {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center; /* Căn giữa nội dung bên trong */
+}
+footer span {
+    color: var(--accent-red);
+}
+
+/* --- BUTTON STYLE --- */
+.portfolio-txt-button {
+    font-family: var(--font-mono);
+    font-weight: bold;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 10px 30px;
+    border: 2px solid var(--ink-color); /* Chỉ viền */
+    color: var(--ink-color);
+    background: transparent; /* Nền trong suốt */
+    transition: all 0.3s ease;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+/* Hover Effect: Chỉ đổi màu viền/chữ, KHÔNG TÔ NỀN */
+.portfolio-txt-button:hover {
+    color: var(--accent-red);
+    border-color: var(--accent-red);
+    background: transparent;
+    text-shadow: 0 0 1px var(--accent-red); /* Chữ đậm lên xíu */
+    box-shadow: 4px 4px 0px rgba(179, 0, 0, 0.15); /* Bóng cứng nhẹ */
+}
+
+.copyright {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 5px;
+}
+
+.copyright a {
+    color: var(--ink-color);
+    text-decoration: underline;
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* Dọc lại trên mobile */
+        gap: 15px;
+        padding: 20px;
+    }
+
+    #footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    #footer-container > div:last-child {
+        align-items: center; /* Về giữa trên mobile */
+        text-align: center;
+    }
+
+    .blog-main, .blog-container {
+        padding: 0 20px;
+    }
+}
+/* --- TYPEWRITER EFFECT --- */
+.typewriter-text {
+    font-family: var(--font-mono); /* Dùng font monospace mới ra chất máy chữ */
+    color: var(--ink-color);
+    display: inline-block;
+    overflow: hidden; /* Ẩn phần văn bản chưa "gõ" ra */
+    border-right: 3px solid var(--accent-red); /* Con trỏ nhấp nháy (màu đỏ cho ngầu) */
+    white-space: nowrap; /* Bắt buộc giữ trên 1 dòng để tính toán width */
+    margin: 0 auto;
+    letter-spacing: 1px;
+    max-width: fit-content; /* Ôm sát nội dung */
+
+    /* Animation:
+       - typing: Chạy từ width 0 -> 100% trong 4s
+       - blink-caret: Con trỏ nhấp nháy vô tận
+    */
+    animation:
+            typing 4s steps(70, end),
+            blink-caret .75s step-end infinite;
+}
+
+/* Hiệu ứng mở rộng chiều rộng */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* Hiệu ứng con trỏ nhấp nháy */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--accent-red) }
+}

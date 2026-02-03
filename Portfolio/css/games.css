@@ -1,0 +1,313 @@
+/* --- MODERN PIXEL THEME CONFIG --- */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+:root {
+    --bg-dark: #202028;      /* Màu nền tối kiểu than chì */
+    --card-bg: #2d2d3a;      /* Màu nền card */
+    --pixel-gold: #ffcc00;   /* Màu vàng coin */
+    --pixel-green: #52ff00;  /* Màu xanh HP bar */
+    --pixel-red: #ff3e3e;    /* Màu đỏ thông báo */
+    --text-main: #e0e0e0;
+    --border-color: #000000;
+
+    /* Font setup */
+    --font-header: 'Press Start 2P', cursive; /* Font tiêu đề pixel đậm */
+    --font-body: 'VT323', monospace;          /* Font nội dung dễ đọc hơn */
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    font-size: 20px; /* Font VT323 cần size to hơn chút */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    /* Tạo background caro mờ kiểu màn chơi */
+    background-image:
+            linear-gradient(rgba(255, 255, 255, 0.03) 2px, transparent 2px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 2px, transparent 2px);
+    background-size: 40px 40px;
+    background-position: center top;
+}
+
+a { text-decoration: none; color: inherit; transition: 0.2s; }
+
+/* --- HEADER UI --- */
+header {
+    padding: 40px 20px;
+    background: var(--bg-dark);
+    border-bottom: 4px solid var(--border-color);
+    box-shadow: 0 6px 0 rgba(0,0,0,0.3);
+    z-index: 10;
+}
+
+/* Thanh máu / Level phía trên cùng */
+.hud-bar {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto 20px auto;
+    font-family: var(--font-header);
+    font-size: 0.7rem;
+    color: var(--pixel-gold);
+}
+
+.breadcrumbs {
+    font-family: var(--font-header);
+    color: var(--pixel-green);
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.breadcrumbs a:hover {
+    color: var(--pixel-gold);
+    text-shadow: 2px 2px 0 #000;
+}
+
+.main-title {
+    font-family: var(--font-header);
+    font-size: 2rem;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 4px 4px 0 var(--border-color), 6px 6px 0 var(--pixel-gold);
+    margin: 10px 0;
+    letter-spacing: -2px;
+}
+
+.subtitle {
+    font-style: italic;
+    color: #aaa;
+    margin-top: 10px;
+    border-left: 4px solid var(--pixel-red);
+    padding-left: 15px;
+    display: inline-block;
+    background: rgba(0,0,0,0.2);
+}
+
+/* --- GAME GRID LAYOUT --- */
+.hobby-container {
+    flex: 1;
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.gridLinks {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Tự động chia cột */
+    gap: 40px;
+    max-width: 1000px;
+    width: 100%;
+}
+
+/* --- PIXEL CARD DESIGN --- */
+.pixel-card {
+    background: var(--card-bg);
+    border: 4px solid var(--border-color);
+    /* Solid shadow tạo hiệu ứng khối pixel */
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.5);
+    position: relative;
+    transition: transform 0.1s, box-shadow 0.1s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Hiệu ứng nhấn nút khi hover */
+.pixel-card:hover {
+    transform: translate(4px, 4px);
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.5);
+    border-color: var(--pixel-gold);
+}
+
+.card-image-wrapper {
+    width: 100%;
+    height: 250px;
+    border-bottom: 4px solid var(--border-color);
+    overflow: hidden;
+    background: #000;
+}
+
+.card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Giữ ảnh sắc nét, không bị mờ theo kiểu antialiasing */
+    image-rendering: pixelated;
+    transition: transform 0.3s;
+}
+
+.pixel-card:hover img {
+    transform: scale(1.1);
+}
+
+.card-info {
+    padding: 15px;
+    text-align: left;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.game-title {
+    font-family: var(--font-header);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: var(--pixel-gold);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.game-dev {
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    color: #fff;
+    background: var(--border-color);
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 0; /* Vuông vức */
+}
+
+/* --- FOOTER --- */
+footer {
+    background: #111;
+    padding: 30px 20px;
+    border-top: 4px solid var(--pixel-gold);
+    font-family: var(--font-body);
+}
+
+#footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-logo {
+    font-family: var(--font-header);
+    font-size: 1.2rem;
+}
+
+.footer-logo span { color: var(--pixel-gold); }
+
+.pixel-btn {
+    font-family: var(--font-header);
+    font-size: 0.7rem;
+    background: var(--pixel-green);
+    color: #000;
+    padding: 15px 20px;
+    border: 4px solid #000;
+    box-shadow: 4px 4px 0 #fff;
+    display: inline-block;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.pixel-btn:hover {
+    background: #fff;
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 #000;
+}
+
+.copyright {
+    color: #666;
+    font-size: 1rem;
+    text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .main-title { font-size: 1.8rem; }
+    #footer-container { flex-direction: column; text-align: center; }
+    .copyright { text-align: center; }
+}
+/* --- NEW VISUAL EFFECTS --- */
+
+/* 1. Custom Pixel Cursor */
+body {
+    /* Dùng cursor mặc định nếu hình ảnh lỗi, ưu tiên crosshair kiểu game FPS */
+    cursor: crosshair;
+}
+
+a, .pixel-btn, .pixel-card {
+    cursor: pointer; /* Hoặc dùng url đến file ảnh bàn tay pixel nếu có */
+}
+
+/* 2. CRT Scanline Effect (Lớp phủ màn hình TV) */
+.crt-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(
+            rgba(18, 16, 16, 0) 50%,
+            rgba(0, 0, 0, 0.25) 50%
+    );
+    background-size: 100% 4px;
+    z-index: 999; /* Nằm trên tất cả nhưng dưới loading */
+    pointer-events: none; /* Không chặn click chuột */
+    opacity: 0.6;
+}
+
+/* 3. Loading Screen Styles */
+#loading-screen {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #000;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-header);
+    transition: opacity 0.5s ease-out;
+}
+
+.loading-text {
+    color: var(--pixel-gold);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    animation: blink 0.8s infinite;
+}
+
+.loading-bar-container {
+    width: 300px;
+    height: 30px;
+    border: 4px solid #fff;
+    padding: 2px;
+}
+
+.loading-bar-fill {
+    height: 100%;
+    background: var(--pixel-green);
+    width: 0%;
+    transition: width 0.1s;
+    box-shadow: 0 0 10px var(--pixel-green);
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* 4. Star Rating Styles */
+.rating {
+    color: var(--pixel-gold);
+    font-size: 0.8rem;
+    margin-top: 5px;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0 #000;
+}

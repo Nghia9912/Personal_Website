@@ -1,0 +1,129 @@
+/* portfoliogamestyle.css
+   Cyberpunk / neon theme for the canvas game + UI overlays */
+
+/* Reset minimal */
+* { box-sizing: border-box; margin:0; padding:0; }
+html,body { height:100%; width:100%; font-family: 'Roboto Condensed', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background: #000814; color: #dff; overflow:hidden; }
+
+/* Canvas fills the viewport */
+#gameCanvas {
+    display:block;
+    position:fixed;
+    inset:0;
+    width:100vw;
+    height:100vh;
+    background: linear-gradient(180deg, #000814 0%, #041022 100%);
+    z-index:1;
+}
+
+/* HUD (top-left) */
+.game-hud {
+    position:fixed;
+    left:18px;
+    top:18px;
+    z-index: 40;
+    pointer-events: none;
+    color:#cffff7;
+    text-shadow: 0 1px 6px rgba(0,255,215,0.06);
+}
+.game-hud .hud-block {
+    background: rgba(2,6,12,0.45);
+    border: 1px solid rgba(0,255,200,0.08);
+    padding:10px 14px;
+    border-radius:10px;
+    min-width:220px;
+    backdrop-filter: blur(6px);
+    pointer-events: auto;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+}
+.game-hud .hint { font-size:12px; opacity:0.9; margin-top:6px; color:#aef0dc }
+
+/* Map panel (center overlay) */
+.map-panel {
+    position:fixed;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    width: min(1000px, 92vw);
+    height: min(700px, 84vh);
+    background: linear-gradient(180deg, rgba(6,16,22,0.92), rgba(4,8,12,0.92));
+    border-radius: 12px;
+    border: 1px solid rgba(0,255,220,0.12);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+    z-index:60;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    backdrop-filter: blur(8px);
+    padding:10px;
+}
+.map-panel.hidden { display:none }
+
+.map-panel-header {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:8px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.map-panel-header h3 { color:#bff; letter-spacing:1px; font-weight:700; font-size:16px }
+.map-panel-header .map-close {
+    background: linear-gradient(90deg,#032025,#062a2c);
+    color:#cafff0;
+    border: 1px solid rgba(0,255,220,0.06);
+    padding:6px 10px; border-radius:8px; cursor:pointer;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.6);
+}
+
+/* Node list inside map panel */
+.map-panel-body { padding:12px; overflow:auto; flex:1 }
+.node-list { list-style:none; display:flex; flex-direction:column; gap:10px }
+.node-item {
+    display:flex; align-items:center; justify-content:space-between;
+    background: rgba(0,0,0,0.18);
+    border-radius:8px; padding:8px 12px;
+    border: 1px solid rgba(255,255,255,0.02);
+}
+.node-left { display:flex; align-items:center; gap:10px }
+.node-dot { width:14px; height:14px; border-radius:50%; background:#444; box-shadow: 0 0 8px rgba(0,0,0,0.2) }
+.node-dot.unlocked { background: linear-gradient(180deg,#00ffd7,#00d3b7); box-shadow: 0 0 12px rgba(0,255,215,0.45) }
+.node-meta .node-label { font-weight:700; color:#dff; font-size:14px }
+.node-meta .node-desc { font-size:12px; color:#9bb; margin-top:2px }
+
+/* Buttons */
+.btn-claim, .btn-locked, .map-panel .map-close {
+    cursor:pointer; border: none;
+    font-weight:700; font-size:13px;
+}
+.btn-claim {
+    background: linear-gradient(90deg,#00ffd7,#00c9a5);
+    color:#021017; padding:8px 12px; border-radius:10px;
+    box-shadow: 0 6px 18px rgba(0,255,200,0.08);
+}
+.btn-locked {
+    background: linear-gradient(90deg,#2a2a2a,#121212);
+    color:#6b6b6b; padding:8px 12px; border-radius:10px;
+}
+
+/* Notifications and toasts */
+.notify-root { position:fixed; right:20px; top:20px; z-index:70; display:flex; flex-direction:column; gap:8px; }
+.toast {
+    min-width:160px; padding:8px 12px; border-radius:8px; background:linear-gradient(180deg,#011216,#021018);
+    color:#cffff7; border:1px solid rgba(0,255,200,0.06); box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    transform: translateY(-8px); opacity:0; transition: all 220ms cubic-bezier(.2,.9,.3,1);
+}
+.toast.show { transform:none; opacity:1 }
+.toast.hide { transform: translateY(-8px); opacity:0; }
+
+/* small floating DOM notifications (alternate) */
+.notify { background: rgba(0,255,200,0.06); border:1px solid rgba(0,255,200,0.06); color:#9ff;
+    padding:6px 8px; border-radius:8px; margin-bottom:6px; font-weight:600 }
+
+/* Responsive tweaks */
+@media (max-width:720px){
+    .map-panel { width:94vw; height:86vh; padding:8px }
+    .game-hud .hud-block { min-width:180px; font-size:13px }
+}
+
+/* visual helpers for debug */
+.debug-dot { position:absolute; width:10px; height:10px; border-radius:50%; background:#ff0; pointer-events:none; z-index:1000 }
