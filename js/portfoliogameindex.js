@@ -32,7 +32,7 @@ mapPanel.innerHTML = `
   </div>
 `;
 document.body.appendChild(mapPanel);
-const notifyRoot = document.createElement('div'); notifyRoot.className = 'notify-root'; document.body.appendChild(notifyRoot);
+const notifyRoot = document.createElement('div'); notifyRoot.className = 'notify-html'; document.body.appendChild(notifyRoot);
 mapPanel.querySelector('.map-close').addEventListener('click', ()=> { mapOpen = false; updateMapUI(); });
 
 /* input */
