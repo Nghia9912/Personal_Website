@@ -2,7 +2,7 @@
     --text-color: #ffffff;
 }
 
-a{
+a {
     text-decoration: none;
     color: #ffff;
     font-family: Arial, Helvetica, sans-serif;
@@ -12,13 +12,11 @@ a{
     margin: 0;
     box-sizing: border-box;
 }
-body{
-    background-color: #282c34;
-    transition: background-color 0.8s ease, font-family 0.8s ease;
-    color: var(--text-color);
-}
+
 body {
-    transition: background-color 0.5s ease, color 0.5s ease;
+    background-color: #282c34;
+    transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1), color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--text-color);
 }
 
 .theme-default {
@@ -30,10 +28,12 @@ body {
     --text-color: #059ea6;
     background-color: #282c34;
 }
+
 .theme-1600 {
     --text-color: #059ea6;
     background-color: #4634A7FF;
 }
+
 .theme-1000 {
     --text-color: #00FF00;
     background-color: #000000;
@@ -69,6 +69,7 @@ header {
     background-size: 400%;
     background-image: linear-gradient(135deg, #5335cf 0%, #99622FFF 25%, #de005e 50%, #5335cf 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -76,6 +77,7 @@ header {
     0% {
         background-position: 0% 50%;
     }
+
     100% {
         background-position: 400% 50%;
     }
@@ -116,7 +118,7 @@ canvas {
     background: transparent;
 }
 
-nav a{
+nav a {
     text-decoration: none;
     display: inline-flex;
     justify-content: center;
@@ -152,23 +154,24 @@ main {
     line-height: 50px;
     margin-bottom: 18px;
     text-shadow: 0 0 20px rgba(5, 158, 166, 0.5),
-    0 0 40px rgba(5, 158, 166, 0.3);
+        0 0 40px rgba(5, 158, 166, 0.3);
     animation: glow 2s ease-in-out infinite alternate;
 }
 
 @keyframes glow {
     from {
         text-shadow: 0 0 10px rgba(5, 158, 166, 0.5),
-        0 0 20px rgba(5, 158, 166, 0.3);
+            0 0 20px rgba(5, 158, 166, 0.3);
     }
+
     to {
         text-shadow: 0 0 20px rgba(5, 158, 166, 0.8),
-        0 0 40px rgba(5, 158, 166, 0.5),
-        0 0 60px rgba(5, 158, 166, 0.3);
+            0 0 40px rgba(5, 158, 166, 0.5),
+            0 0 60px rgba(5, 158, 166, 0.3);
     }
 }
 
-.portfolio-txt-container-left{
+.portfolio-txt-container-left {
     left: 80px;
     padding: 30px;
     border-radius: 20px;
@@ -190,19 +193,19 @@ main {
     transform: translateX(-10px);
 }
 
-.portfolio-txt-container-center{
+.portfolio-txt-container-center {
     text-align: center;
     margin-left: 400px;
     margin-right: 400px;
 }
 
-.portfolio{
+.portfolio {
     position: relative;
     width: 100%;
     height: 100vh;
 }
 
-.portfolio-txt-container{
+.portfolio-txt-container {
     font-family: Arial, Helvetica, sans-serif;
     position: absolute;
     color: var(--text-color);
@@ -212,7 +215,7 @@ main {
 }
 
 /* --- BUTTON CHỈNH SỬA --- */
-.portfolio-txt-button{
+.portfolio-txt-button {
     cursor: pointer;
     position: relative;
     display: inline-block;
@@ -222,23 +225,29 @@ main {
     border-radius: 20px;
     border-color: var(--text-color);
     color: var(--text-color);
-    background-color: transparent; /* Nền trong suốt mặc định */
+    background-color: transparent;
+    /* Nền trong suốt mặc định */
     font-size: 30px;
     font-weight: bold;
     text-align: center;
-    transition: all 0.4s ease; /* Hiệu ứng chuyển màu mượt */
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    /* Hiệu ứng chuyển màu mượt */
     overflow: hidden;
 }
 
 .portfolio-txt-button:hover {
-    background-color: transparent; /* Giữ nền trong suốt khi hover */
-    color: #FFD700; /* Chữ chuyển màu vàng */
-    border-color: #FFD700; /* Viền chuyển màu vàng */
+    background-color: transparent;
+    /* Giữ nền trong suốt khi hover */
+    color: #FFD700;
+    /* Chữ chuyển màu vàng */
+    border-color: #FFD700;
+    /* Viền chuyển màu vàng */
     /* Thêm hiệu ứng phát sáng cho viền và chữ */
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5), inset 0 0 10px rgba(255, 215, 0, 0.1);
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.6), inset 0 0 15px rgba(255, 215, 0, 0.2);
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+    transform: translateY(-4px) scale(1.02);
 }
+
 /* --- HẾT PHẦN BUTTON --- */
 
 #threejs-canvas-container {
@@ -272,7 +281,7 @@ main {
     justify-content: center;
 }
 
-.portfolio-txt-body{
+.portfolio-txt-body {
     font-size: 20px;
     line-height: 1.6;
     opacity: 0.9;
@@ -309,7 +318,7 @@ main {
     transform: translateY(0) scale(1) skewX(-10deg);
 }
 
-.hackerman{
+.hackerman {
     font-family: "Hack", monospace;
     white-space: nowrap;
 }
@@ -320,19 +329,19 @@ main {
     gap: 10px;
 }
 
-.divider{
+.divider {
     padding: 2px;
     margin: 10px auto;
     width: 65%;
     height: 3px;
     background: linear-gradient(90deg,
-    transparent 0%,
-    #fada5e 50%,
-    transparent 100%);
+            transparent 0%,
+            #fada5e 50%,
+            transparent 100%);
     box-shadow: 0 0 10px rgba(250, 218, 94, 0.5);
 }
 
-.link-container{
+.link-container {
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
@@ -349,28 +358,28 @@ main {
     transform: translateY(0);
 }
 
-.links{
+.links {
     color: white;
 }
 
-ul a{
+ul a {
     transition: 0.3s ease;
 }
 
-ul a:hover{
+ul a:hover {
     text-decoration: underline;
     color: #FFD700;
 }
 
-.list{
+.list {
     list-style-type: none;
 }
 
-.li{
+.li {
     list-style-type: none;
 }
 
-#portfolio2{
+#portfolio2 {
     font-family: Arial, sans-serif;
     display: flex;
     align-items: center;
@@ -455,8 +464,8 @@ ul a:hover{
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
     border-radius: 20px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.18);
@@ -473,11 +482,9 @@ ul a:hover{
     left: -50%;
     width: 200%;
     height: 200%;
-    background: linear-gradient(
-            transparent,
+    background: linear-gradient(transparent,
             rgba(255, 255, 255, 0.1),
-            transparent
-    );
+            transparent);
     transform: rotate(45deg);
     transition: all 0.6s ease;
 }
@@ -490,6 +497,7 @@ ul a:hover{
     0% {
         transform: translateX(-100%) translateY(-100%) rotate(45deg);
     }
+
     100% {
         transform: translateX(100%) translateY(100%) rotate(45deg);
     }
@@ -498,103 +506,111 @@ ul a:hover{
 .skill-icon-container:hover {
     transform: translateY(-10px) scale(1.05);
     box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4),
-    inset 0 2px 0 rgba(255, 255, 255, 0.4),
-    inset 0 -2px 0 rgba(0, 0, 0, 0.4);
+        inset 0 2px 0 rgba(255, 255, 255, 0.4),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.4);
 }
 
 /* Individual shadow colors for each tech icon */
 .skill-icon-container:nth-child(1):hover {
     box-shadow: 0 15px 50px rgba(255, 107, 0, 0.4),
-    0 0 30px rgba(255, 107, 0, 0.3);
+        0 0 30px rgba(255, 107, 0, 0.3);
 }
 
 .skill-icon-container:nth-child(2):hover {
     box-shadow: 0 15px 50px rgba(6, 147, 227, 0.4),
-    0 0 30px rgba(6, 147, 227, 0.3);
+        0 0 30px rgba(6, 147, 227, 0.3);
 }
 
 .skill-icon-container:nth-child(3):hover {
     box-shadow: 0 15px 50px rgba(247, 223, 30, 0.4),
-    0 0 30px rgba(247, 223, 30, 0.3);
+        0 0 30px rgba(247, 223, 30, 0.3);
 }
 
 .skill-icon-container:nth-child(4):hover {
     box-shadow: 0 15px 50px rgba(240, 81, 51, 0.4),
-    0 0 30px rgba(240, 81, 51, 0.3);
+        0 0 30px rgba(240, 81, 51, 0.3);
 }
 
 .skill-icon-container:nth-child(5):hover {
     box-shadow: 0 15px 50px rgba(48, 105, 152, 0.4),
-    0 0 30px rgba(48, 105, 152, 0.3);
+        0 0 30px rgba(48, 105, 152, 0.3);
 }
 
 .skill-icon-container:nth-child(6):hover {
     box-shadow: 0 15px 50px rgba(0, 102, 204, 0.4),
-    0 0 30px rgba(0, 102, 204, 0.3);
+        0 0 30px rgba(0, 102, 204, 0.3);
 }
 
 .skill-icon-container:nth-child(7):hover {
     box-shadow: 0 15px 50px rgba(126, 66, 228, 0.4),
-    0 0 30px rgba(126, 66, 228, 0.3);
+        0 0 30px rgba(126, 66, 228, 0.3);
 }
 
 .skill-icon-container:nth-child(8):hover {
     box-shadow: 0 15px 50px rgba(240, 80, 50, 0.4),
-    0 0 30px rgba(240, 80, 50, 0.3);
+        0 0 30px rgba(240, 80, 50, 0.3);
 }
 
 .skill-icon-container:nth-child(9):hover {
     box-shadow: 0 15px 50px rgba(100, 100, 100, 0.4),
-    0 0 30px rgba(100, 100, 100, 0.3);
+        0 0 30px rgba(100, 100, 100, 0.3);
 }
 
 .skill-icon-container:nth-child(10):hover {
     box-shadow: 0 15px 50px rgba(104, 160, 99, 0.4),
-    0 0 30px rgba(104, 160, 99, 0.3);
+        0 0 30px rgba(104, 160, 99, 0.3);
 }
 
 .skill-icon-container:nth-child(11):hover {
     box-shadow: 0 15px 50px rgba(0, 119, 200, 0.4),
-    0 0 30px rgba(0, 119, 200, 0.3);
+        0 0 30px rgba(0, 119, 200, 0.3);
 }
 
 .skill-icon-container:nth-child(12):hover {
     box-shadow: 0 15px 50px rgba(242, 78, 30, 0.4),
-    0 0 30px rgba(242, 78, 30, 0.3);
+        0 0 30px rgba(242, 78, 30, 0.3);
 }
 
 .skill-icon-container:nth-child(13):hover {
     box-shadow: 0 15px 50px rgba(0, 117, 143, 0.4),
-    0 0 30px rgba(0, 117, 143, 0.3);
+        0 0 30px rgba(0, 117, 143, 0.3);
 }
 
 .skill-icon-container:nth-child(14):hover {
     box-shadow: 0 15px 50px rgba(150, 150, 150, 0.4),
-    0 0 30px rgba(150, 150, 150, 0.3);
+        0 0 30px rgba(150, 150, 150, 0.3);
 }
 
 .skill-icon-container:nth-child(15):hover {
     box-shadow: 0 15px 50px rgba(56, 189, 248, 0.4),
-    0 0 30px rgba(56, 189, 248, 0.3);
+        0 0 30px rgba(56, 189, 248, 0.3);
 }
 
 /* --- FOOTER SECTION --- */
 footer {
     position: relative;
-    padding: 30px 20px; /* Tăng padding để thoáng hơn */
+    padding: 30px 20px;
+    /* Tăng padding để thoáng hơn */
     width: 100%;
     background-color: #333333;
-    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3); /* Bóng đổ ngược lên trên */
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
+    /* Bóng đổ ngược lên trên */
     z-index: 10;
 }
 
 #footer-container {
-    display: flex; /* Kích hoạt Flexbox */
-    justify-content: space-between; /* Đẩy 2 phần sang 2 bên trái phải */
-    align-items: center; /* Căn giữa theo chiều dọc */
-    max-width: 1200px; /* Giới hạn chiều rộng để không bị quá bè trên màn hình lớn */
-    margin: 0 auto; /* Căn giữa container */
-    flex-wrap: wrap; /* Cho phép xuống dòng trên màn hình nhỏ */
+    display: flex;
+    /* Kích hoạt Flexbox */
+    justify-content: space-between;
+    /* Đẩy 2 phần sang 2 bên trái phải */
+    align-items: center;
+    /* Căn giữa theo chiều dọc */
+    max-width: 1200px;
+    /* Giới hạn chiều rộng để không bị quá bè trên màn hình lớn */
+    margin: 0 auto;
+    /* Căn giữa container */
+    flex-wrap: wrap;
+    /* Cho phép xuống dòng trên màn hình nhỏ */
     gap: 20px;
 }
 
@@ -614,13 +630,15 @@ footer {
 .footer-right {
     display: flex;
     flex-direction: column;
-    align-items: flex-end; /* Căn lề phải cho các phần tử con */
+    align-items: flex-end;
+    /* Căn lề phải cho các phần tử con */
     gap: 10px;
 }
 
 /* Ghi đè style của nút button chung để nhỏ hơn khi ở trong footer */
 .portfolio-txt-button.footer-btn {
-    font-size: 16px; /* Giảm cỡ chữ xuống */
+    font-size: 16px;
+    /* Giảm cỡ chữ xuống */
     padding: 8px 16px;
     border-width: 2px;
     margin: 0;
@@ -633,7 +651,8 @@ footer {
 
 .copyright {
     text-decoration: none;
-    color: #cccccc; /* Màu xám nhẹ cho copyright */
+    color: #cccccc;
+    /* Màu xám nhẹ cho copyright */
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     text-align: right;
@@ -652,13 +671,15 @@ footer {
 /* --- RESPONSIVE MOBILE --- */
 @media (max-width: 768px) {
     #footer-container {
-        flex-direction: column; /* Xếp chồng dọc trên mobile */
+        flex-direction: column;
+        /* Xếp chồng dọc trên mobile */
         justify-content: center;
         text-align: center;
     }
 
     .footer-right {
-        align-items: center; /* Căn giữa nội dung bên phải khi xuống mobile */
+        align-items: center;
+        /* Căn giữa nội dung bên phải khi xuống mobile */
     }
 
     .copyright {

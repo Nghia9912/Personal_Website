@@ -1,18 +1,25 @@
 
 //scrolling color efect
+let isScrolling = false;
 window.addEventListener("scroll", function () {
-    if (window.scrollY > 1600) {
-        document.body.classList.add("theme-1600");
-        document.body.classList.remove("theme-1000", "theme-300", "theme-default");
-    } else if (window.scrollY > 1000) {
-        document.body.classList.add("theme-1000");
-        document.body.classList.remove("theme-1600", "theme-300", "theme-default");
-    } else if (window.scrollY > 300) {
-        document.body.classList.add("theme-300");
-        document.body.classList.remove("theme-1600", "theme-1000", "theme-default");
-    } else {
-        document.body.classList.add("theme-default");
-        document.body.classList.remove("theme-1600", "theme-1000", "theme-300");
+    if (!isScrolling) {
+        window.requestAnimationFrame(function () {
+            if (window.scrollY > 1600) {
+                document.body.classList.add("theme-1600");
+                document.body.classList.remove("theme-1000", "theme-300", "theme-default");
+            } else if (window.scrollY > 1000) {
+                document.body.classList.add("theme-1000");
+                document.body.classList.remove("theme-1600", "theme-300", "theme-default");
+            } else if (window.scrollY > 300) {
+                document.body.classList.add("theme-300");
+                document.body.classList.remove("theme-1600", "theme-1000", "theme-default");
+            } else {
+                document.body.classList.add("theme-default");
+                document.body.classList.remove("theme-1600", "theme-1000", "theme-300");
+            }
+            isScrolling = false;
+        });
+        isScrolling = true;
     }
 });
 
@@ -99,7 +106,7 @@ const observer = new IntersectionObserver((entries) => {
             setTimeout(() => {
                 startGlitchEffect(entry.target);
                 observer.unobserve(entry.target);
-            }, );
+            },);
         }
     });
 }, { threshold: 0.5 }); // Kích hoạt khi 50% phần tử hiển thị
@@ -117,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (entry.isIntersecting) {
                 setTimeout(() => {
                     techIcons.classList.add("show");
-                }, 7000); // 7 giây sau khi thấy phần tử
+                }, 5700); // 5.7 giây sau khi thấy phần tử
                 observer.unobserve(techIcons); // Ngừng quan sát sau khi đã kích hoạt
             }
         });
@@ -127,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Gsap moreAboutMe
-import {interiors} from "./dataGsap.js";
+import { interiors } from "./dataGsap.js";
 document.addEventListener("DOMContentLoaded", function () {
     const cursor = document.querySelector(".cursor");
     const numberOfItems = 6; // FIXED VARIABLE NAME
@@ -150,15 +157,16 @@ document.addEventListener("DOMContentLoaded", function () {
         cursor.appendChild(item);
 
         const angle = i * angleIncrement;
-        const x = centerX +radius * Math.cos(angle);
-        const y = centerY +radius * Math.sin(angle);
+        const x = centerX + radius * Math.cos(angle);
+        const y = centerY + radius * Math.sin(angle);
 
-        const rotation =(angle*180)/Math.PI;
+        const rotation = (angle * 180) / Math.PI;
 
-        gsap.set(item,{
-            x: x+"px",
-            y: y+"px",
+        gsap.set(item, {
+            x: x + "px",
+            y: y + "px",
             rotation: rotation,
 
-        })}
+        })
+    }
 });
